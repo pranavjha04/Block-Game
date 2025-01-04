@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"/>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="menu">
+        <p class="heading">BLOCK</p>
+        <button class="start-btn btn">Start</button>
+        <button class="control-btn btn">Controls</button>
+        <div class="max-score-container">
+            <div class="Max-Score">High Score : </div>
+            <span class="value">0</span>
+        </div>
+    </div>
+    <div class="control hidden">
+        <div class="heading-container">
+            <div class="return-btn btn">&#8592;</div>
+            <p class="heading">CONTROLS</p>
+            <div class="temp"></div>
+        </div>
+        <ul class="controls">
+            <li class="control-container">
+                <div class="icons">
+                    <div class="icon">W</div>
+                    <div class="icon">&#8593;</div>
+                    <p class="desc">Up</p>
+                </div>
+            </li>
+            <li class="control-container">
+                <div class="icons">
+                    <div class="icon">A</div>
+                    <div class="icon">&#8592;</div>
+                    <p class="desc">Left</p>
+                </div>
+            </li>
+            <li class="control-container">
+                <div class="icons">
+                    <div class="icon">S</div>
+                    <div class="icon"> &#8595;</div>
+                    <p class="desc">Down</p>
+                </div>
+            </li>
+            <li class="control-container">
+                <div class="icons">
+                    <div class="icon">D</div>
+                    <div class="icon">&#8594;</div>
+                    <p class="desc">Right</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="game-container hidden">
+        <div class="score-container">
+            <p class="score">Score : </p>
+            <span class="score-val">0<span>
+        </div>
+        <div class="player"></div>
+    </div>
+    <div class="game-over-container container hidden">
+        <div class="curr-score-container">
+            <p class="curr-score">Your Score : </p>
+            <span class="curr-score-val">0</span>
+        </div>
+        
+        <button class="restart-btn btn">Reset</button>
+        <button class="menu-btn btn">Menu</button>
+    </div>
+</body>
+</html>
