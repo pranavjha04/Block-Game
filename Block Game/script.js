@@ -9,11 +9,8 @@ const score = document.querySelector('.score-val');
 const gameOverContainer = document.querySelector('.game-over-container');
 const resetBtn = document.querySelector('.restart-btn');
 const finalScore = document.querySelector('.curr-score-val');
-const menuBtn = document.querySelector('.menu-btn');
 const maxScoreAll = document.querySelector('.value');
 const sides = ["left", "right", "top", "bottom"];
-
-let currentScore = 0;
 let MAX_Y_RANGE = 600 - 50;
 let MAX_X_RANGE = 600 - 50;
 let SPEED = 10;
@@ -30,7 +27,6 @@ class Game {
     controlBtn.addEventListener("click", this._controlEvent.bind(this));
     returnBtn.addEventListener("click", this._returnEvent.bind(this));
     resetBtn.addEventListener("click", this._resetEvent.bind(this));
-    menuBtn.addEventListener("click", this._menuEvent.bind(this));
     this._initMaxScore();
   }
 
@@ -149,18 +145,18 @@ class Game {
     const playerHeight = player.offsetHeight;
     let top = parseFloat(player.style.top) || 0;
     let left = parseFloat(player.style.left) || 0;
-    if (this._keysPressed["w"] && top - SPEED >= 0) {
-      top -= SPEED;
-    }
-    if (this._keysPressed["s"] && top + playerHeight + SPEED <= gameContainerCoords.height) {
-      top += SPEED;
-    }
-    if (this._keysPressed["a"] && left - SPEED >= 0) {
-      left -= SPEED;
-    }
-    if (this._keysPressed["d"] && left + playerWidth + SPEED <= gameContainerCoords.width) {
-      left += SPEED;
-    }
+    if (this._keysPressed["w"] || this._keysPressed['ArrowUp'] || this._keysPressed['D']) 
+      if(top-SPEED >= 0) top -= SPEED;
+
+    if (this._keysPressed["s"] || this._keysPressed['ArrowDown'] || this._keysPressed['S']) 
+      if(top + playerHeight + SPEED <= gameContainerCoords.height) top += SPEED;
+    
+    if (this._keysPressed["a"] || this._keysPressed['ArrowLeft'] || this._keysPressed['A']) 
+      if(left - SPEED >= 0) left -= SPEED;
+    
+    if (this._keysPressed["d"] || this._keysPressed['ArrowRight'] || this._keysPressed['D']) 
+      if(left  + playerWidth + SPEED <= gameContainerCoords.width) left += SPEED;
+    
     player.style.top = `${top}px`;
     player.style.left = `${left}px`;
     this.#animationFrameId = requestAnimationFrame(this._movePlayer.bind(this));
@@ -189,11 +185,6 @@ class Game {
     cancelAnimationFrame(this.#animationFrameId);
     this._stopScoreInterval();
     this._init();
-  }
-
-  _menuEvent() {
-    gameOverContainer.classList.add("hidden");
-    menu.classList.remove("hidden");
   }
 
   _init() {
